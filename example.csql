@@ -1,11 +1,15 @@
+# Simple example of how to create SQL from csv data, using explodSQL
 %var: delimiter = ;
 %var: me = thorsager 
 
 %tmpl: UPDATE `sub` SET `t_date`=DATE('${1}'), updated_by='${me}' WHERE `a_id`=${0};
 %tmpl: UPDATE `account` SET `t_date`=DATE('${1}') updated_by='${me}' WHERE `id`=${0};
 
-%end  /* explodeSQL will not look for "meta-data" after this tag */
+%end  
+# The above %end tag is not required, but it keeps explodeSQL from going through
+# all the data, looking for vars and templates..
 
+# -- pure data below this..
 91001045;2012-12-03
 11001220;2012-12-31
 91001172;2012-12-03
